@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.util.Scanner;
 
 public class Main{
@@ -12,7 +11,7 @@ public class Main{
         System.out.println("SISTEMA DE CADASTRO DE NINJAS");
         System.out.println("Quantos Ninjas Deseja Cadastrar? ");
         numeroDeNinjas = teclado.nextInt();
-
+        String[] arrayNinjas = new String[numeroDeNinjas];
         do{
             System.out.println("QUAL ACAO DESEJA FAZER?");
             System.out.println("0 - Cadastrar Ninja");
@@ -20,12 +19,24 @@ public class Main{
             System.out.println("2 - Encerrar");
             System.out.print("Opção >>> ");
             opcao = teclado.nextInt();
+            teclado.nextLine();
             switch (opcao){
                 case 0:
-                    System.out.println("Cadastrar Ninja");
+                    if (arrayNinjas[0] == null){
+                        for (int i = 0; i < arrayNinjas.length; i++) {
+                            System.out.print("Nome do Ninja"+" - "+(i)+": ");
+                            arrayNinjas[i] = teclado.nextLine();
+
+                        }
+                    }else{
+                        System.out.println("Cadastro já foi preenchido!");
+                    }
                     break;
                 case 1:
-                    System.out.println("Verificar Ninjas Cadastrados");
+                    System.out.println(">>>NINJAS CADASTRADOS<<<");
+                    for (int i = 0; i < arrayNinjas.length; i++) {
+                        System.out.println(i +" - "+ arrayNinjas[i]);
+                    }
                     break;
                 case 2:
                     System.out.println("Encerrando o sistema. Até breve!");
